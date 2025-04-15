@@ -2,7 +2,7 @@ Package: ransacR
 Type: Package
 Title: Robust Regression via RANSAC
 Version: 0.1.0
-Authors@R: person("Jadson", "Abreu", email = "jadson.abreu@example.com", role = c("aut", "cre"))
+Authors@R: person("Jadson", "Abreu", email = "jadson.ap@gmail.com", role = c("aut", "cre"))
 Description: Provides robust regression using the RANSAC algorithm for linear and nonlinear models.
 License: MIT
 Encoding: UTF-8
