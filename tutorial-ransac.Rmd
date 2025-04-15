@@ -1,0 +1,27 @@
+---
+title: "Tutorial: Ajuste Robusto com RANSAC"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Tutorial: Ajuste Robusto com RANSAC}
+  %\VignetteEngine{rmarkdown::html_vignette}
+  %\VignetteEncoding{UTF-8}
+---
+
+```r
+library(ransacR)
+
+# Simulando dados com outliers
+dados <- data.frame(
+  D = c(10, 15, 20, 25, 30, 35, 40, 45, 50, 55),
+  H = c(15, 18, 22, 25, 28, 30, 32, 34, 35, 36),
+  V = c(0.12, 0.35, 0.65, 1.00, 1.45, 2.10, 2.80, 3.60, 20.00, 25.00)
+)
+
+modelo <- ransac_nls(V ~ a * D^b * H^c, data = dados,
+                     start = list(a = 0.001, b = 2, c = 1),
+                     n_min = 4, tol = 0.3)
+
+plot(modelo, data = dados, xvar = "D")
+
+metrics_ransac(modelo, dados)
+```
