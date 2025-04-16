@@ -1,14 +1,8 @@
 Package: ransacR
-Type: Package
-Title: Robust Regression via RANSAC
+Title: RANSAC for Linear and Nonlinear Regression
 Version: 0.1.0
 Authors@R: person("Jadson", "Abreu", email = "jadson.ap@gmail.com", role = c("aut", "cre"))
-Description: Provides robust regression using the RANSAC algorithm for linear and nonlinear models.
+Description: Ajuste robusto usando o algoritmo RANSAC para modelos lm() e nls().
 License: MIT
 Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-Depends: R (>= 4.0.0)
-Imports:
-    stats,
-    ggplot2
