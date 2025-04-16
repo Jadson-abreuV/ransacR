@@ -1,17 +1,13 @@
-# Conteúdo do ransac_nls.R (recrie conforme necessário)
 #' Ajuste de modelo não linear via RANSAC
 #'
-#' Ajusta um modelo não linear robusto usando `nls()` com o algoritmo RANSAC.
-#'
-#' @param formula Fórmula do modelo não linear (ex: V ~ a * D^b * H^c).
-#' @param data Data frame com os dados de entrada.
-#' @param start Lista com os valores iniciais dos parâmetros (ex: list(a = 0.01, b = 2, c = 1)).
-#' @param n_min Número mínimo de pontos para ajustar o modelo.
-#' @param n_iter Número de iterações do algoritmo RANSAC.
-#' @param tol Tolerância para considerar um ponto como inlier (erro absoluto).
-#' @param verbose Se `TRUE`, imprime o progresso durante a execução.
-#'
-#' @return Um modelo `nls` ajustado com os inliers, com classe adicional `"ransac_nls"` e atributo `"inliers"`.
+#' @param formula Fórmula do modelo, como em `nls()`
+#' @param data Conjunto de dados com as variáveis
+#' @param start Lista com valores iniciais dos parâmetros
+#' @param n_min Número mínimo de observações para ajuste
+#' @param n_iter Número de iterações do RANSAC
+#' @param tol Tolerância para considerar um ponto como inlier
+#' @param verbose Se TRUE, mostra progresso no console
+#' @return Um objeto `nls` ajustado com inliers, com classe extra `"ransac_nls"`
 #' @export
 ransac_nls <- function(formula, data, start, n_min, n_iter = 100, tol = 0.2, verbose = FALSE) {
   melhor_inliers <- c()
@@ -42,3 +38,4 @@ ransac_nls <- function(formula, data, start, n_min, n_iter = 100, tol = 0.2, ver
   class(modelo_final) <- c("ransac_nls", class(modelo_final))
   attr(modelo_final, "inliers") <- melhor_inliers
   return(modelo_final)
+}
